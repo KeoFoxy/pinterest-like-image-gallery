@@ -20,5 +20,8 @@
     "react-redux": "^8.1.2",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "daisyui": "^3.6.5"
   }
 }
