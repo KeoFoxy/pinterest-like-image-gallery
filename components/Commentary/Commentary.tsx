@@ -33,7 +33,7 @@ const Commentary = ({text}: CommentaryProps) => {
 
     return (
         <div className="relative group p-4">
-            <div className="flex items-center justify-between p-2 rounded-md">
+            <div className="flex items-start p-2 rounded-md">
                 {isEditing ? (
                     <>
                         <input
@@ -41,8 +41,8 @@ const Commentary = ({text}: CommentaryProps) => {
                             value={comment}
                             ref={inputRef}
                             onChange={(e) => setComment(e.target.value)}
-                            className="bg-white text-lg text-gray-500 flex-grow mr-2 w-full focus:outline-none leading-relaxed"
-                            maxLength={20}
+                            className="bg-white text-lg text-gray-700 flex-grow mr-2 w-full focus:outline-none leading-relaxed"
+                            maxLength={500}
                         />
                         <button onClick={handleEditToggle}>
                             <CheckIcon className="text-black" />
