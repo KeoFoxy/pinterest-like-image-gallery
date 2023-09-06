@@ -7,7 +7,9 @@ import GalleryManager from '../components/Gallery/GalleryManager';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <Provider store={store}>
-            <GalleryManager />
+            <div className="max-w-screen-xl mx-auto w-3/5">
+                <GalleryManager />
+            </div>
         </Provider>
     )
 }
