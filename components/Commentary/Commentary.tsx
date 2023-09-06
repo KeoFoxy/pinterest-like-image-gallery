@@ -6,7 +6,7 @@ import { CommentaryProps } from "@/components/Commentary/Commentary.props";
 
 const Commentary = ({text, onUpdate}: CommentaryProps) => {
 
-    const [isEditing, setIsEditing] = useState(!text); // Режим редактирования активен, если текста нет
+    const [isEditing, setIsEditing] = useState(false); // Режим редактирования активен, если текста нет
     const [comment, setComment] = useState(text);
     const inputRef = useRef<HTMLInputElement>(null);
 
