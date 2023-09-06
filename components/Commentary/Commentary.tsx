@@ -4,13 +4,16 @@ import CheckIcon from '@mui/icons-material/Check';
 
 import { CommentaryProps } from "@/components/Commentary/Commentary.props";
 
-const Commentary = ({text}: CommentaryProps) => {
+const Commentary = ({text, onUpdate}: CommentaryProps) => {
 
     const [isEditing, setIsEditing] = useState(false);
     const [comment, setComment] = useState(text);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleEditToggle = () => {
+        if (isEditing) {
+            onUpdate(comment);
+        }
         setIsEditing((prev) => !prev);
     };
 
