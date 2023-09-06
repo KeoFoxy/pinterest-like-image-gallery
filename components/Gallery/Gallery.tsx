@@ -4,7 +4,7 @@ import {GalleryProps} from "@/components/Gallery/Gallery.props";
 const Gallery = ({items, onRemove}: GalleryProps) => {
 
     return (
-        <div className="mt-5 px-100 columns-3 col-span-5 sm:columns-2 lg:columns-3 xl:columns-4">
+        <div className="mt-5 px-100 columns-3 col-span-5 xs:columns-1 sm:columns-1 md:columns-2 lg:columns-3 xl:columns-4">
             {items.map(item => (
                 <ImageCard imageUrl={item.url} comment={item.comment} id={item.id} onRemove={onRemove} />
             ))}
