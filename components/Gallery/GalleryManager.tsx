@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem, setImageUrl, setComment, setItems } from './Gallery.slice';
 import { RootState, loadFromLocalStorage } from "@/stateManager/store";
 import { useEffect } from "react";
+import useIsClient from "@/Utils/IsClient";
 
 const GalleryManager = () => {
     const dispatch = useDispatch();
     const galleryItems = useSelector((state: RootState) => state.gallery.items);
     const imageUrl = useSelector((state: RootState) => state.gallery.imageUrl);
     const comment = useSelector((state: RootState) => state.gallery.comment);
+    const isClient = useIsClient();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setImageUrl(event.target.value));
@@ -29,12 +31,17 @@ const GalleryManager = () => {
     }
 
     useEffect(() => {
-        const initialState = loadFromLocalStorage();
-        if (initialState && initialState.gallery) {
-            console.log("Загружаем данные из localStorage:", initialState.gallery.items); // добавьте эту строку
-            dispatch(setItems(initialState.gallery.items));
+        if (isClient) {
+            const initialState = loadFromLocalStorage();
+            if (initialState && initialState.gallery) {
+                dispatch(setItems(initialState.gallery.items));
+            }
         }
-    }, []);
+    }, [isClient]);
+
+    if (!isClient) {
+        return <div>Loading...</div>; // заглушка на серверной стороне
+    }
 
     return (
         <div className="bg-gray-200">
