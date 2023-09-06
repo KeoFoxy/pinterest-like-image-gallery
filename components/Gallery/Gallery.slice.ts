@@ -43,9 +43,15 @@ const gallerySlice = createSlice({
         },
         removeItem: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter(item => item.id !== action.payload);
+        },
+        updateComment: (state, action: PayloadAction<{ id: number; comment: string }>) => {
+            const item = state.items.find(i => i.id === action.payload.id);
+            if (item) {
+                item.comment = action.payload.comment;
+            }
         }
     }
 });
 
-export const { setItems, setImageUrl, setComment, addItem, removeItem } = gallerySlice.actions;
+export const { setItems, setImageUrl, setComment, addItem, removeItem, updateComment } = gallerySlice.actions;
 export default gallerySlice.reducer;
