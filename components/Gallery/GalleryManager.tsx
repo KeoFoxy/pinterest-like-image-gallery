@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem, setImageUrl, setComment, setItems } from './Gallery.slice';
 import { RootState, loadFromLocalStorage } from "@/stateManager/store";
 import { useEffect } from "react";
-import useIsClient from "@/Utils/IsClient";
+import useIsClient from "@/utils/IsClient";
 
 const GalleryManager = () => {
     const dispatch = useDispatch();
