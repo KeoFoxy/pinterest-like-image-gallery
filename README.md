@@ -8,6 +8,9 @@
 - **Tailwind CSS:** 
 - **MUI Icons:**
 
+## :mag_right: Превью
+Вы также можете оценить проект [**здесь**](https://images-gallery-keo.vercel.app/)
+
 ### :wrench: Запуск
 
 ```bash
