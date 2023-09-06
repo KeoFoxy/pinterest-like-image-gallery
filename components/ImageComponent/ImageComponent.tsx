@@ -21,7 +21,7 @@ const ImageComponent = ({imageUrl}: ImageComponentProps) => {
                     <img
                         src={imageUrl}
                         alt="Image content"
-                        className="max-w-full align-middle rounded-md shadow-xl cursor-pointer"
+                        className="max-w-full align-middle rounded-md cursor-pointer"
                         onClick={handleImageClick}
                     />
                 </div>
