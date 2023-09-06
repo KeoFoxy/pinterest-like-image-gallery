@@ -48,7 +48,12 @@ export default function App({ Component, pageProps }: AppProps) {
         }
     };
 
-  return (
+    const handleRemoveImage = (idToRemove: number) => {
+        setGalleryItems((prevItems) => prevItems.filter(item => item.id !== idToRemove));
+    }
+
+
+    return (
       <div className={"bg-gray-200"}>
           <div className="container mx-auto p-4">
               <input type="text" id="first_name"
@@ -58,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
                      className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      placeholder="Add image URL" />
           </div>
-        <Gallery items={galleryItems}/>
+        <Gallery items={galleryItems} onRemove={handleRemoveImage}/>
       </div>
   )
 }

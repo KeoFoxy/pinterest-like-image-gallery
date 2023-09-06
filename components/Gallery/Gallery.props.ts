@@ -5,5 +5,5 @@ interface GalleryItem {
 
 export interface GalleryProps {
     items: GalleryItem[];
-    onRemove?: (id: number) => void;
+    onRemove: (id: number) => void;
 }
