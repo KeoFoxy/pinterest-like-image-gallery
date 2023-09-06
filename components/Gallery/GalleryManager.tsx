@@ -2,10 +2,11 @@ import { Gallery } from "@/components";
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem, setImageUrl, setComment, setItems } from './Gallery.slice';
 import { RootState, loadFromLocalStorage } from "@/stateManager/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useIsClient from "@/utils/IsClient";
 
 const GalleryManager = () => {
+    const [error, setError] = useState<string | null>(null);
     const dispatch = useDispatch();
     const galleryItems = useSelector((state: RootState) => state.gallery.items);
     const imageUrl = useSelector((state: RootState) => state.gallery.imageUrl);
@@ -13,7 +14,14 @@ const GalleryManager = () => {
     const isClient = useIsClient();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(setImageUrl(event.target.value));
+        const value = event.target.value;
+        dispatch(setImageUrl(value));
+
+        if (value && !isValidURL(value)) {
+            setError('Please enter a valid URL');
+        } else {
+            setError(null);
+        }
     };
 
     const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +29,7 @@ const GalleryManager = () => {
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter' && imageUrl.trim() !== '' && comment.trim() !== '') {
+        if (event.key === 'Enter' && imageUrl.trim() !== '') {
             dispatch(addItem());
         }
     };
@@ -43,6 +51,16 @@ const GalleryManager = () => {
         return <div>Loading...</div>; // заглушка на серверной стороне
     }
 
+    const isValidURL = (str: string): boolean => {
+        const pattern = new RegExp('^(https?:\\/\\/)?' +
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' +
+            '((\\d{1,3}\\.){3}\\d{1,3}))' +
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+            '(\\?[;&a-z\\d%_.~+=-]*)?' +
+            '(\\#[-a-z\\d_]*)?$', 'i');
+        return pattern.test(str);
+    };
+
     return (
         <div className="bg-gray-200">
             <div className="container mx-auto p-4">
@@ -52,6 +70,7 @@ const GalleryManager = () => {
                        onKeyDown={handleKeyDown}
                        className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        placeholder="Add image URL" />
+                {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
                 <input type="text"
                        value={comment}
