@@ -6,7 +6,7 @@ import { CommentaryProps } from "@/components/Commentary/Commentary.props";
 
 const Commentary = ({text, onUpdate}: CommentaryProps) => {
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(!text); // Режим редактирования активен, если текста нет
     const [comment, setComment] = useState(text);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -15,6 +15,10 @@ const Commentary = ({text, onUpdate}: CommentaryProps) => {
             onUpdate(comment);
         }
         setIsEditing((prev) => !prev);
+    };
+
+    const handlePlaceholderClick = () => {
+        setIsEditing(true);
     };
 
     const handleEscapePress = (event: KeyboardEvent) => {
@@ -53,10 +57,18 @@ const Commentary = ({text, onUpdate}: CommentaryProps) => {
                     </>
                 ) : (
                     <>
-                        <p className="text-lg leading-relaxed text-gray-700 flex-grow mr-2">{comment}</p>
-                        <button onClick={handleEditToggle}>
-                            <EditIcon className="text-black"/>
-                        </button>
+                        {comment ? (
+                            <>
+                                <p className="text-lg leading-relaxed text-gray-700 flex-grow mr-2">{comment}</p>
+                                <button onClick={handleEditToggle}>
+                                    <EditIcon className="text-black"/>
+                                </button>
+                            </>
+                        ) : (
+                            <div className="flex-grow mr-2 text-lg leading-relaxed text-gray-400 cursor-pointer" onClick={handlePlaceholderClick}>
+                                Add comment
+                            </div>
+                        )}
                     </>
                 )}
             </div>
