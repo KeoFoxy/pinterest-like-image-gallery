@@ -12,7 +12,7 @@ const ImageComponent = ({imageUrl}: ImageComponentProps) => {
         if (e.target === e.currentTarget) {
             setIsOpen(false);
         }
-    }
+    };
 
     return (
         <>
@@ -29,14 +29,16 @@ const ImageComponent = ({imageUrl}: ImageComponentProps) => {
 
             {isOpen && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={handleClose}>
-                    <img
-                        src={imageUrl}
-                        alt="Image content"
-                        className="max-w-full max-h-full align-middle"
-                    />
+                    <div className="w-4/5 h-4/5 flex items-center justify-center overflow-hidden" onClick={handleClose}>
+                        <img
+                            src={imageUrl}
+                            alt="Image content"
+                            className="max-w-full max-h-full align-middle object-contain"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </div>
                 </div>
             )}
-
         </>
     );
 };
