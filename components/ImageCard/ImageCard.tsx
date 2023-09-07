@@ -1,11 +1,9 @@
-
-import { ImageCardProps } from "@/components/ImageCard/ImageCard.props";
-import {Commentary, ImageComponent} from "@/components";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { ImageCardProps } from "@/components/ImageCard/ImageCard.props";
+import { Commentary, ImageComponent } from "@/components";
 
 import { useDispatch } from 'react-redux';
 import { updateComment } from '../Gallery/Gallery.slice';
-
 
 const ImageCard = ( {imageUrl, comment, id, onRemove}: ImageCardProps) => {
     const dispatch = useDispatch();

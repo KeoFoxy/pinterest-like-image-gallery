@@ -1,12 +1,12 @@
 import { MouseEvent, useState } from "react";
-import {ImageComponentProps} from "@/components/ImageComponent/ImageComponent.props";
+import { ImageComponentProps } from "@/components/ImageComponent/ImageComponent.props";
 
 const ImageComponent = ({imageUrl}: ImageComponentProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleImageClick = () => {
         setIsOpen(true);
-    }
+    };
 
     const handleClose = (e: MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
