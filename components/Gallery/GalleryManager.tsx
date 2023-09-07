@@ -29,7 +29,7 @@ const GalleryManager = () => {
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter' && imageUrl.trim() !== '') {
+        if (event.key === 'Enter' && imageUrl.trim() !== '' && !error) {
             dispatch(addItem());
         }
     };
