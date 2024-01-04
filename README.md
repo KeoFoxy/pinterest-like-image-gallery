@@ -1,40 +1,27 @@
 # :art: Image Gallery
 
-## :computer: Технологии
+## :computer: Technologies
 
-- **Next.js:** 
 - **React**
+- **Next.js:** 
 - **Redux Toolkit:** 
 - **Tailwind CSS:** 
 - **MUI Icons:**
 
-## :mag_right: Превью
-Вы также можете оценить проект [**здесь**](https://images-gallery-keo.vercel.app/)
+## :mag_right: Preview
+You can check it out by yourself [**here**](https://images-gallery-keo.vercel.app/)
 
-## :wrench: Запуск
+## :wrench: Run
 
 ```bash
 npm run dev
 ```
 
-## :hammer: Функционал
+## :hammer: Features
 
-- Добавление изображений по URL(Есть проверка URL с помощью regex).
-- Добавление комментариев к изображениям сразу или потом.
-- Редактирование комментариев.
-- Удаление изображений.
-- Превью изображения.
-- Адаптив
-
-## :clipboard: Задание
-Спроектировать и реализовать галерею изображений на TS.
-Требования:
-  - ~~Добавление изображения (url и комментарий)~~
-  - ~~Удаление изображения~~
-  - ~~Вывод загруженных изображений с комментариями~~
-  - ~~Вид: маленькое превью изображения, снизу комментарий~~
-  - ~~Выводятся построчно на весь экран, скролл только вертикальный~~
-  - ~~Просмотр изображения по клику на превью (изображение максимум на 80% экрана, закрывается по клику вне изображения)~~
-  - ~~Комментарий к изображению должен редактироваться~~
-  - ~~Сохранение состояния при обновлении страницы (хранилище по выбору)~~
-  - ~~Использование React + любой state manager~~
+- Adding images by URL (There is a URL check using regex).
+- Add comments to images immediately or later.
+- Edit comments.
+- Deleting images.
+- Preview of the image.
+- Adaptive
