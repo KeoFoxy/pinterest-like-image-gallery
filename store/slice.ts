@@ -7,7 +7,7 @@ interface ImageItem {
 }
 
 interface GalleryState {
-    items: ImageItem[];
+    items: Array<ImageItem>;
     imageUrl: string;
     comment: string;
 }
@@ -15,7 +15,7 @@ interface GalleryState {
 const initialState: GalleryState = {
     items: [],
     imageUrl: "",
-    comment: ""
+    comment: "",
 };
 
 const gallerySlice = createSlice({
@@ -32,26 +32,41 @@ const gallerySlice = createSlice({
             state.comment = action.payload;
         },
         addItem: (state) => {
-            const lastId = state.items.length > 0 ? state.items[state.items.length - 1].id : 0;
+            const lastId =
+                state.items.length > 0
+                    ? state.items[state.items.length - 1].id
+                    : 0;
             state.items.push({
                 id: lastId + 1,
                 url: state.imageUrl,
-                comment: state.comment
+                comment: state.comment,
             });
             state.imageUrl = "";
             state.comment = "";
         },
         removeItem: (state, action: PayloadAction<number>) => {
-            state.items = state.items.filter(item => item.id !== action.payload);
+            state.items = state.items.filter(
+                (item) => item.id !== action.payload
+            );
         },
-        updateComment: (state, action: PayloadAction<{ id: number; comment: string }>) => {
-            const item = state.items.find(i => i.id === action.payload.id);
+        updateComment: (
+            state,
+            action: PayloadAction<{ id: number; comment: string }>
+        ) => {
+            const item = state.items.find((i) => i.id === action.payload.id);
             if (item) {
                 item.comment = action.payload.comment;
             }
-        }
-    }
+        },
+    },
 });
 
-export const { setItems, setImageUrl, setComment, addItem, removeItem, updateComment } = gallerySlice.actions;
+export const {
+    setItems,
+    setImageUrl,
+    setComment,
+    addItem,
+    removeItem,
+    updateComment,
+} = gallerySlice.actions;
 export default gallerySlice.reducer;
